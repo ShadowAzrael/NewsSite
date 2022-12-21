@@ -1,0 +1,62 @@
+﻿@{
+}
+<html>
+<head>
+    <title>新闻咨询</title>
+
+</head>
+<body>
+    <div id="nav">
+        <div class="nav_main">
+            <a href="javascript:void(0)">全部</a>
+            <a href="javascript:void(0)">互联网</a>
+            <a href="javascript:void(0)">NBA</a>
+            <a href="javascript:void(0)">汽车</a>
+            <a href="javascript:void(0)">影视</a>
+            <a href="javascript:void(0)">旅游</a>
+            <a href="javascript:void(0)">科技</a>
+            <a href="javascript:void(0)">农业</a>
+            <a href="javascript:void(0)">房产</a>
+            <a href="javascript:void(0)">国际</a>
+            <input type="button" value="搜索" id="search">
+            <input type="text" id="content" placeholder="请输入查找的内容">
+        </div>
+    </div>
+    @RenderBody()
+    <div class="footer">
+        <p>
+            <a href="javascript:void(0)">关于NewWebsite</a>
+            |
+            <a href="javascript:void(0)">诚聘英才</a>
+            |
+            <a href="javascript:void(0)">商务合作</a>
+            |
+            <a href="javascript:void(0)">法律声明</a>
+            |
+            <a href="javascript:void(0)">帮助中心</a>
+            |
+            <a href="javascript:void(0)">作者投稿</a>
+            |
+            <a href="javascript:void(0)">联系我们</a>
+            |
+            <a href="javascript:void(0)">友情链接</a>
+        </p>
+        <p>
+            Copyright©www.newwebsite.com&nbsp;&nbsp;All&nbsp;&nbsp;Rights&nbsp;&nbsp;Reserved&nbsp;版权所有&nbsp;&nbsp;
+            <a href="">京ICP备xxxxxxxx-2号</a>
+        </p>
+        <p>本站所收录新闻来源、社区话题、新闻评论均属其个人学习行为，不代表本站立场。</p>
+    </div>
+
+    <script>
+        $(".nav_main>a").click(function () {
+            //console.log($(this).text());
+            window.location.href = "index.html?kind=" + $(this).text();
+        });
+        $("#search").click(function () {
+            //console.log($("#content").val());
+            window.location.href = "index.html?search=" + $("#content").val();
+        });
+    </script>
+</body>
+</html>

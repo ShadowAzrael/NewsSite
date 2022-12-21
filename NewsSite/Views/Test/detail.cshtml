@@ -1,0 +1,32 @@
+﻿@using NewsSite.Models.Database;
+@{
+    var News = ViewData["news"] as News;
+
+}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>NewsDetail</title>
+</head>
+
+<body>
+    <!--导航栏-->
+    <div class="content">
+
+        <div id="main">
+            <h1 class="detail-title">@News.Kind</h1>
+            <div class="post_info">
+                <span>@News.Time</span>　来源: <span>@News.Source</span>
+            </div>
+            <div class="post_content">@News.NewsContent</div>
+        </div>
+
+    </div>
+    <script>
+
+    </script>
+</body>
+
+</html>

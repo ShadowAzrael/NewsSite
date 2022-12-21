@@ -1,0 +1,107 @@
+﻿@using NewsSite.Models;
+@using NewsSite.Models.Database;
+@{
+    @*@model NewsMVC.Models.Database.News;*@
+    var News = ViewData["news"] as List<News>;
+    int row;
+}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Newssite</title>
+    <style>
+        .off{
+            display:none;
+        }
+    </style>
+</head>
+
+<body>
+    <!--导航栏-->
+    <div class="content">
+
+        <div id="main">
+            @{
+                
+                if (News.Count % 6 == 0) {
+                    row = News.Count / 6;
+                }
+                else 
+                {
+                    row = News.Count / 6 + 1;
+                }
+                for(var i = 1; i <= row; i++)
+                {
+                    var list = News.Skip((i - 1) * 6).Take(6).ToList();
+                    if (i == 1)
+                    {
+                        <ul id="main_ul">
+                            @{
+                                foreach (var news in list)
+                                {
+                                    <li>
+                                        <a href="detail.html?id=@news.Id">
+                                            <img src="@news.Photo">
+                                            <p>@news.Title</p>
+                                            <p>
+                                                @news.NewsContent
+                                            </p>
+                                            <p>发布时间:@news.Time</p>
+                                            <p>文章来源:@news.Source</p>
+                                        </a>
+                                    </li>
+
+                                }
+                            }
+                        </ul>
+                    }
+                    else
+                    {
+                        <ul id="main_ul" class="off">
+                            @{
+                                foreach (var news in list)
+                                {
+                                    <li>
+                                        <a href="detail.html?id=@news.Id">
+                                            <img src="@news.Photo">
+                                            <p>@news.Title</p>
+                                            <p>
+                                                @news.NewsContent
+                                            </p>
+                                            <p>发布时间:@news.Time</p>
+                                            <p>文章来源:@news.Source</p>
+                                        </a>
+                                    </li>
+
+                                }
+                            }
+                        </ul>
+                    }
+                }
+                
+            }
+        </div>
+        <div class="paging">
+            <ul class="pagination">
+                @{
+                    for(var i = 1; i <= row; i++)
+                    {
+                        <li><a class="active" href="javascript:show(@i)">@i</a></li>
+                    }
+                }
+                
+            </ul>
+        </div>
+
+    </div>
+    
+    <script>
+        function show(i){
+            $("#main").children().eq(i - 1).removeClass("off").siblings().addClass("off");
+        }
+        
+    </script>
+</body>
+</html>
